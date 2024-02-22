@@ -6,11 +6,13 @@ import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
 
+import Button from './button';
+
 interface HeaderProps {
-    childern: React.ReactNode;
+    children: React.ReactNode;
     className?: string;
 }
-const Header = ({ childern, className }: HeaderProps) => {
+const Header = ({ children, className }: HeaderProps) => {
     const router = useRouter();
 
     const handleLogout = () => {
@@ -47,7 +49,28 @@ const Header = ({ childern, className }: HeaderProps) => {
                         <BiSearch className="text-black" size={20} />
                     </button>
                 </div>
+                <div className="flex items-center justify-between gap-x-4">
+                    <>
+                        <div>
+                            <Button
+                                onClick={() => {}}
+                                className="bg-transparent font-medium text-neutral-300"
+                            >
+                                Sign up
+                            </Button>
+                        </div>
+                        <div>
+                            <Button
+                                onClick={() => {}}
+                                className="bg-white px-6 py-2"
+                            >
+                                Log in
+                            </Button>
+                        </div>
+                    </>
+                </div>
             </div>
+            {children}
         </div>
     );
 };
