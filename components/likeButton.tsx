@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import toast from 'react-hot-toast';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
 import useAuthModal from '@/hooks/useAuthModal';
 import { useUser } from '@/hooks/useUser';
-import toast from 'react-hot-toast';
 
 interface LikeButtonProps {
     songId: string;
@@ -20,7 +20,7 @@ const LikeButton = ({ songId }: LikeButtonProps) => {
     const authModal = useAuthModal();
     const { user } = useUser();
 
-    const [isLiked, setIsLiked] = useState(false);
+    const [isLiked, setIsLiked] = useState<boolean>(false);
 
     useEffect(() => {
         if (!user?.id) return;
@@ -51,8 +51,9 @@ const LikeButton = ({ songId }: LikeButtonProps) => {
         if (isLiked) {
             const { error } = await supabaseClient
                 .from('liked_songs')
-                .insert({ user_id: user.id, song_id: songId });
-
+                .delete()
+                .eq('user_id', user.id)
+                .eq('song_id', songId);
             if (error) {
                 toast.error(error.message);
             } else {
@@ -61,9 +62,8 @@ const LikeButton = ({ songId }: LikeButtonProps) => {
         } else {
             const { error } = await supabaseClient
                 .from('liked_songs')
-                .delete()
-                .eq('user_id', user.id)
-                .eq('song_id', songId);
+                .insert({ user_id: user.id, song_id: songId });
+
             if (error) {
                 toast.error(error.message);
             } else {
