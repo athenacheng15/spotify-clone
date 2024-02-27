@@ -28,12 +28,12 @@ const MediaItem = ({ data, onClick }: MediaItemProps) => {
                     alt="Media Item"
                     className="object-cover"
                 />
-                <div className="flex flex-col gap-y-1 overflow-hidden">
-                    <p className="truncate text-white">{data.title}</p>
-                    <p className="truncate text-sm text-neutral-400">
-                        {data.author}
-                    </p>
-                </div>
+            </div>
+            <div className="flex flex-col gap-y-1 overflow-hidden">
+                <p className="truncate text-white">{data.title}</p>
+                <p className="truncate text-sm text-neutral-400">
+                    By {data.author}
+                </p>
             </div>
         </div>
     );
