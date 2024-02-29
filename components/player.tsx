@@ -3,6 +3,7 @@
 import useGetSongById from '@/hooks/useGetSongById';
 import useLoadSongUrl from '@/hooks/useLoadSongUrl';
 import usePlayer from '@/hooks/usePlayer';
+import PlayerContent from './player-content';
 
 const Player = () => {
     const player = usePlayer();
@@ -16,7 +17,8 @@ const Player = () => {
 
     return (
         <div className="fixed bottom-0 h-20 w-full bg-black px-4 py-2">
-            Player
+            {/* hook doesn't support dynamic url changes so need to use key to make it rerender */}
+            <PlayerContent key={songUrl} song={song} songUrl={songUrl} />
         </div>
     );
 };
