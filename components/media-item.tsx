@@ -5,6 +5,7 @@ import type { Song } from '@/types';
 import Image from 'next/image';
 
 import useLoadImage from '@/hooks/useLoadImage';
+import usePlayer from '@/hooks/usePlayer';
 
 interface MediaItemProps {
     data: Song;
@@ -12,9 +13,11 @@ interface MediaItemProps {
 }
 
 const MediaItem = ({ data, onClick }: MediaItemProps) => {
+    const player = usePlayer();
     const imageUrl = useLoadImage(data);
     const handleClick = () => {
         if (onClick) return onClick(data.id);
+        return player.setId(data.id);
     };
     return (
         <div
