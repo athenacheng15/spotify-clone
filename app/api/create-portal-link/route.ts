@@ -6,7 +6,7 @@ import { stripe } from '@/libs/stripe';
 import { getUrl } from '@/libs/helpers';
 import { createOrRetriveCustomer } from '@/libs/supabaseAdmin';
 
-export async function Post() {
+export async function POST() {
     try {
         const supabase = createRouteHandlerClient({ cookies });
         const {
