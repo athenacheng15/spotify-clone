@@ -64,7 +64,7 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
 
     useEffect(() => {
         sound?.play();
-        return () => sound?.onload();
+        return () => sound?.unload();
     }, [sound]);
 
     const handlePlay = () => {
