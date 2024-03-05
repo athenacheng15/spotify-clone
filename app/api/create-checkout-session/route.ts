@@ -6,7 +6,7 @@ import { getUrl } from '@/libs/helpers';
 import { createOrRetriveCustomer } from '@/libs/supabaseAdmin';
 import { stripe } from '@/libs/stripe';
 
-export async function Post(request: Request) {
+export async function POST(request: Request) {
     const { price, quantity = 1, metadata = {} } = await request.json();
 
     try {
