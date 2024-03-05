@@ -27,7 +27,7 @@ const AuthModal = () => {
 
     const onChange = (open: boolean) => {
         if (!open) {
-            onClose;
+            onClose();
         }
     };
 
@@ -38,7 +38,6 @@ const AuthModal = () => {
             isOpen={isOpen}
             onChange={onChange}
         >
-            Auth modal children
             <Auth
                 theme="dark"
                 magicLink
