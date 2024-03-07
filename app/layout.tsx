@@ -16,6 +16,7 @@ const figtree = Figtree({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'Spotify Clone',
     description: 'Listen to music!',
+    icons: [{ url: '/logo.svg', href: '/logo.svg' }],
 };
 
 export const revalidate = 0;
